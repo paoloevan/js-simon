@@ -16,11 +16,6 @@ e quali dei numeri da indovinare sono stati individuati.
 const containerEl = document.querySelector('.container');
 const timerEl = document.querySelector('.timer');
 
-//dichiaro variabile
-
-
-
-
 //genero cinque numeri casuali e li inserisco in array
 const numbers = arrayRandom(5);
 console.log(numbers, 'pc numbers');
@@ -28,9 +23,15 @@ console.log(numbers, 'pc numbers');
 //cancello i numeri dopo 30 secondi
 clearNumber();
 
-//genero 5 prompt dopo 30 secondi e inserisco in array
+//genero 5 prompt dopo 30 secondi e verifico se sono indovinati
 const myNumbers = myNumbersPrompt();
-console.log(myNumbers, 'my numbers');
+//console.log(myNumbers, 'my numbers');
+
+//emetto messaggio in console
+
+
+
+
 
 
 
@@ -66,20 +67,24 @@ function clearNumber() {
     }, 1000)
 }
 
-//funzione per generare array con prompt
+//funzione per verificare numeri indovinati e contarli
 function myNumbersPrompt() {
-    let seconds = 5
+    let seconds = 6;
     const myNumbers = [];
     const intervalId = setInterval(function () {
         seconds--
         if (seconds == 0) {
             clearInterval(intervalId);
             for (let i = 0; i < 5; i++) {
-                let myNumber = prompt('inserisci numero');
-                myNumbers.push(myNumber);
-                console.log('my numbers', myNumbers);
+                let myNumber = Number(prompt('inserisci numero'));
+                if (numbers.includes(myNumber)) {
+                    myNumbers.push(myNumber)
+                }
+
             }
+            console.log('numeri indovinati', myNumbers);
+            console.log('quanti numeri indovinati', myNumbers.length);
+
         }
     }, 1000)
-    return myNumbers;
 }
