@@ -27,14 +27,6 @@ clearNumber();
 const myNumbers = myNumbersPrompt();
 //console.log(myNumbers, 'my numbers');
 
-//emetto messaggio in console
-
-
-
-
-
-
-
 
 
 
@@ -46,7 +38,9 @@ function arrayRandom(howMany) {
         let number = Math.floor(Math.random() * 100);
         if (!numbers.includes(number)){
             containerEl.insertAdjacentHTML('afterbegin', `<div class="number">${number}</div>`);
-        numbers.push(number);
+            containerEl.insertAdjacentElement('afterbegin', `<div class="number">${number}</div>`);
+
+        numbers.push(number); 
         }
     }
     return numbers;
