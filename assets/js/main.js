@@ -42,10 +42,12 @@ const myNumbers = myNumbersPrompt();
 //funzione numeri casuali
 function arrayRandom(howMany) {
     const numbers = [];
-    for (let i = 0; i < howMany; i++) {
+    while (numbers.length < howMany) {
         let number = Math.floor(Math.random() * 100);
-        containerEl.insertAdjacentHTML('afterbegin', `<div class="number">${number}</div>`);
-        numbers.push(number)
+        if (!numbers.includes(number)){
+            containerEl.insertAdjacentHTML('afterbegin', `<div class="number">${number}</div>`);
+        numbers.push(number);
+        }
     }
     return numbers;
 }
@@ -53,9 +55,9 @@ function arrayRandom(howMany) {
 
 //funzione timer e cancellazione numeri
 function clearNumber() {
-    let seconds = 5
+    let seconds = 31;
     const intervalId = setInterval(function () {
-        seconds--
+        seconds--;
         console.log(seconds);
         if (seconds == 0) {
             clearInterval(intervalId);
@@ -64,27 +66,26 @@ function clearNumber() {
                 numberList[i].style.display = 'none';
             }
         }
-    }, 1000)
+    }, 1000);
 }
 
 //funzione per verificare numeri indovinati e contarli
 function myNumbersPrompt() {
-    let seconds = 6;
+    let seconds = 32;
     const myNumbers = [];
     const intervalId = setInterval(function () {
-        seconds--
+        seconds--;
         if (seconds == 0) {
             clearInterval(intervalId);
             for (let i = 0; i < 5; i++) {
                 let myNumber = Number(prompt('inserisci numero'));
                 if (numbers.includes(myNumber)) {
-                    myNumbers.push(myNumber)
+                    myNumbers.push(myNumber);
                 }
-
             }
             console.log('numeri indovinati', myNumbers);
             console.log('quanti numeri indovinati', myNumbers.length);
 
         }
-    }, 1000)
+    }, 1000);
 }
