@@ -38,7 +38,6 @@ function arrayRandom(howMany) {
         let number = Math.floor(Math.random() * 100);
         if (!numbers.includes(number)){
             containerEl.insertAdjacentHTML('afterbegin', `<div class="number">${number}</div>`);
-            containerEl.insertAdjacentElement('afterbegin', `<div class="number">${number}</div>`);
 
         numbers.push(number); 
         }
